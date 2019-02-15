@@ -1,13 +1,9 @@
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class FillInForm {
-
-    WebDriver driver;
-
-    public FillInForm (WebDriver driver){
-        this.driver = driver;
-    }
 
     By registerButton = By.className("formId-15119811");
     By NameField = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[1]/div[2]/div/input");
@@ -16,18 +12,23 @@ public class FillInForm {
     By submitButton = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[5]/div/span/input");
     By formError = By.className("popup-error");
 
+    public FillInForm open(){
+        Selenide.open("/");
+        return this;
+    }
+
     public FillInForm registerForm (String name, String email, String tel) {
-        driver.findElement(registerButton).click();
-        driver.findElement(NameField).sendKeys(name);
-        driver.findElement(EmailField).sendKeys(email);
-        driver.findElement(TelField).sendKeys(tel);
-        driver.findElement(submitButton).click();
+        $(registerButton).click();
+        $(NameField).setValue(name);
+        $(EmailField).setValue(email);
+        $(TelField).setValue(tel);
+        $(submitButton).click();
         return this;
     }
 
     public String getErrorText(){
 
-        return driver.findElement(formError).getText();
+        return $(formError).text();
     }
 
 }
