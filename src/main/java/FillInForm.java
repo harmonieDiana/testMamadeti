@@ -1,3 +1,4 @@
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
@@ -5,12 +6,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class FillInForm {
 
-    By registerButton = By.className("formId-15119811");
-    By NameField = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[1]/div[2]/div/input");
-    By EmailField = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[2]/div[2]/div/input");
-    By TelField = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[3]/div[2]/div/input");
-    By submitButton = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[5]/div/span/input");
-    By formError = By.className("popup-error");
+    static By registerButton = By.className("formId-15119811");
+    static By NameField = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[1]/div[2]/div/input");
+    static By EmailField = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[2]/div[2]/div/input");
+    static By TelField = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[3]/div[2]/div/input");
+    static By submitButton = By.xpath("//*[@id=\"DEFAULT_FORM\"]/div[2]/div[2]/div/fieldset/div/div/div[5]/div/span/input");
+    static By formError = By.className("popup-error");
+
 
     public FillInForm open(){
         Selenide.open("/");
@@ -27,7 +29,6 @@ public class FillInForm {
     }
 
     public String getErrorText(){
-
         return $(formError).text();
     }
 

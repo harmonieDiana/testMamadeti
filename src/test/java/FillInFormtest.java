@@ -1,6 +1,10 @@
 import org.junit.*;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Configuration.browser;
+import static com.codeborne.selenide.Selenide.$;
 
 public class FillInFormtest {
 
@@ -19,8 +23,9 @@ public class FillInFormtest {
         fillInForm = new FillInForm();
         fillInForm.open();
         fillInForm.registerForm("", "", "");
-        String error = fillInForm.getErrorText();
-        Assert.assertEquals("Обязательные поля не заполнены", error);
+        $(By.className("popup-error")).shouldHave(text("Обязательные поля не заполнены"));
+//        String error = fillInForm.getErrorText();
+//        Assert.assertEquals("Обязательные поля не заполнены", error);
     }
 
     @Test
