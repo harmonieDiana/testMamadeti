@@ -5,15 +5,17 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.page;
 
 public class FillInFormtest {
 
     FillInForm fillInForm;
+    PageServisesWomenCenter pageServisesWomenCenter;
 
     @BeforeClass
     public static void setUp(){
         System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
-        baseUrl = "https://mamadeti.ru/news/pregnant-baby-shower-or-party/";
+        baseUrl = "https://mamadeti.ru";
         browser = "chrome";
 
     }
@@ -33,6 +35,14 @@ public class FillInFormtest {
         fillInForm.open();
         fillInForm.registerForm("test", "test", "222 2222222");
         $(By.className("popup-error")).shouldHave(text("Указан неправильный E-Mail"));
+    }
+
+    @Test
+    public void emptyQuesrionForm(){
+        pageServisesWomenCenter = new PageServisesWomenCenter();
+        pageServisesWomenCenter.open();
+        pageServisesWomenCenter.questionForm();
+
     }
 
 

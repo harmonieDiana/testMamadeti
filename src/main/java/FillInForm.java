@@ -15,7 +15,7 @@ public class FillInForm {
 
 
     public FillInForm open(){
-        Selenide.open("/");
+        Selenide.open("/news/pregnant-baby-shower-or-party/");
         return this;
     }
 
