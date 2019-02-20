@@ -24,8 +24,7 @@ public class FillInFormtest {
         fillInForm.open();
         fillInForm.registerForm("", "", "");
         $(By.className("popup-error")).shouldHave(text("Обязательные поля не заполнены"));
-//        String error = fillInForm.getErrorText();
-//        Assert.assertEquals("Обязательные поля не заполнены", error);
+
     }
 
     @Test
@@ -33,8 +32,7 @@ public class FillInFormtest {
         fillInForm = new FillInForm();
         fillInForm.open();
         fillInForm.registerForm("test", "test", "222 2222222");
-        String error = fillInForm.getErrorText();
-        Assert.assertEquals("Указан неправильный E-Mail", error);
+        $(By.className("popup-error")).shouldHave(text("Указан неправильный E-Mail"));
     }
 
 
