@@ -1,7 +1,9 @@
+import com.codeborne.selenide.Configuration;
 import org.junit.*;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Selenide.$;
@@ -15,6 +17,8 @@ public class FillInFormtest {
     @BeforeClass
     public static void setUp(){
         System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
+        Configuration.timeout = 10000;
+        Configuration.startMaximized = true;
         baseUrl = "https://mamadeti.ru";
         browser = "chrome";
 
@@ -42,6 +46,7 @@ public class FillInFormtest {
         pageServisesWomenCenter = new PageServisesWomenCenter();
         pageServisesWomenCenter.open();
         pageServisesWomenCenter.questionForm();
+        $(By.className("popup-error")).shouldHave(text("Обязательные поля не заполнены"));
 
     }
 

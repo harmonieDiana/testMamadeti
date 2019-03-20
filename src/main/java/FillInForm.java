@@ -14,12 +14,12 @@ public class FillInForm {
     static By formError = By.className("popup-error");
 
 
-    public FillInForm open(){
+    public FillInForm open() {
         Selenide.open("/news/pregnant-baby-shower-or-party/");
         return this;
     }
 
-    public FillInForm registerForm (String name, String email, String tel) {
+    public FillInForm registerForm(String name, String email, String tel) {
         $(registerButton).click();
         $(NameField).setValue(name);
         $(EmailField).setValue(email);
@@ -28,8 +28,9 @@ public class FillInForm {
         return this;
     }
 
-    public String getErrorText(){
+    public String getErrorText() {
         return $(formError).text();
     }
-
 }
+
+   

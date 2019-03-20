@@ -19,6 +19,7 @@ public class PageServisesWomenCenter {
     }
 
     public String getErrorText(){
+
         return $(questionFormError).text();
     }
 }
